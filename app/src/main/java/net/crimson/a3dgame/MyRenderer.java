@@ -83,6 +83,26 @@ public class MyRenderer extends Renderer {
     public void onTouchEvent(MotionEvent motionEvent) {
     }
 
+    public void moveForward() {
+        mCameraPosition.z -= MOVEMENT_SPEED;
+    }
+
+    public void moveBackward() {
+        mCameraPosition.z += MOVEMENT_SPEED;
+    }
+
+    public void moveLeft() {
+        mCameraPosition.x -= MOVEMENT_SPEED;
+    }
+
+    public void moveRight() {
+        mCameraPosition.x += MOVEMENT_SPEED;
+    }
+
+    public void moveCamera(float xPercent, float yPercent) {
+        mCameraPosition.x += xPercent * MOVEMENT_SPEED;
+        mCameraPosition.z += yPercent * MOVEMENT_SPEED;
+    }
     public void rotateCamera(float deltaX, float deltaY) {
         mCameraYaw += deltaX;
         mCameraPitch -= deltaY;

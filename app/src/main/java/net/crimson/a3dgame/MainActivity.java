@@ -11,6 +11,7 @@ import org.rajawali3d.view.SurfaceView;
 public class MainActivity extends Activity implements View.OnTouchListener {
     private MyRenderer mRenderer;
     private float mPreviousX;
+    private JoystickView joystickView;
     private float mPreviousY;
 
     @Override
@@ -24,6 +25,16 @@ public class MainActivity extends Activity implements View.OnTouchListener {
         surfaceView.setSurfaceRenderer(mRenderer);
         surfaceView.setOnTouchListener(this);
         setContentView(surfaceView);
+
+        joystickView = findViewById(R.id.joystickView);
+        if(joystickView != null) {
+            joystickView.setJoystickListener(new JoystickView.JoystickListener() {
+                @Override
+                public void onJoystickMoved(float xPercent, float yPercent) {
+                    mRenderer.moveCamera(xPercent, yPercent);
+                }
+            });
+        }
     }
 
     @Override
