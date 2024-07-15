@@ -47,7 +47,7 @@ public class MyRenderer extends Renderer {
         // Set up camera
         mCamera = getCurrentCamera();
         mCamera.setFarPlane(1000);
-        mCameraPosition = new Vector3(0, 1, 7);
+        mCameraPosition = new Vector3(0, 2, 0);
         mCamera.setPosition(mCameraPosition);
     }
 
@@ -73,7 +73,8 @@ public class MyRenderer extends Renderer {
     protected void onRender(long ellapsedRealtime, double deltaTime) {
         super.onRender(ellapsedRealtime, deltaTime);
         mCamera.setPosition(mCameraPosition);
-        mCamera.setRotation(0, mCameraYaw, -mCameraPitch); // Keep roll fixed at 0
+        mCamera.setRotation(0, mCameraYaw, mCameraPitch); // Keep roll fixed at 0
+
     }
     @Override
     public void onOffsetsChanged(float v, float v1, float v2, float v3, int i, int i1) {
@@ -110,4 +111,6 @@ public class MyRenderer extends Renderer {
         // Clamp the pitch between -90 and 90 degrees
         mCameraPitch = Math.max(-90, Math.min(90, mCameraPitch));
     }
+
+
 }
